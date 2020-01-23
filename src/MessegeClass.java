@@ -1,3 +1,5 @@
+
+/* здесь просто сообщения разные*/
 public class MessegeClass {
     public static void starM() {
         System.out.println("Игра начинается");

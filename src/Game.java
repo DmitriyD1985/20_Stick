@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/*
+Тут просто прописаны ходы игрока, проверка коллическва введенных игроком спичек и все!
+* */
 public class Game {
     public static ArrayList<Integer> list = new ArrayList<>(20);
     public static boolean playerNotMadeTurn = true;
