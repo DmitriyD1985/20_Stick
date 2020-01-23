@@ -33,6 +33,7 @@ public class Game {
         } catch (InputMismatchException exception) {
             System.out.println("Введено не число");
             playerMakeTurn(list);
+
         }
     }
 
