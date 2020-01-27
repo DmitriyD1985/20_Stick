@@ -1,3 +1,4 @@
+import javax.security.sasl.SaslClient;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -7,11 +8,14 @@ import java.util.Scanner;
 * */
 public class Game {
     public static ArrayList<Integer> list = new ArrayList<>(20);
-    public static boolean playerNotMadeTurn = true;
-    public static boolean computerNotMadeTurn = true;
+    static int startCount;
+    public static int take;
 
     public void intialList() {
-        for (int i = 0; i < 20; i++) {
+        System.out.println("Введите количество спиек");
+        Scanner scanner = new Scanner(System.in);
+        startCount = scanner.nextInt();
+        for (int i = 0; i < startCount; i++) {
             list.add(1);
         }
     }
@@ -20,7 +24,7 @@ public class Game {
         System.out.println("Ход игрока");
         System.out.println("Введите количество спичек");
         try {
-            int take = new Scanner(System.in).nextInt();
+            take = new Scanner(System.in).nextInt();
             if (take < 4 && take > 0) {
                 for (int i = 0; i < take; i++) {
                     list.remove(0);
@@ -36,17 +40,20 @@ public class Game {
         }
     }
 
-
     public static void main(String[] args) {
         Game game = new Game();
         game.intialList();
         MessegeClass.starM();
+        int turn = 1;
         while (true) {
-            ArtificalIntllekt.computerAnotherTurn(list);
+            ArtificalIntllekt.computerAnotherTurn(list, turn);
             if (list.size() == 1) {
                 break;
             }
             playerMakeTurn(list);
+
+            turn++;
         }
+        MessegeClass.computerWin();
     }
 }

@@ -1,52 +1,57 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /*
-* Тут признаюсь я вычитал алгоритм, нужно всегода осатвлять игроку определенное число списек.
-* А в случае, если игрок берт спички вторым, а по условию у нас так, то нужно брать столько, чтобы игроку отсавалось всегда 17, 13, 9, 5 и в конце одна спичка.
-* И тут алгоритм такой, в зависимости от того, сколько списе на входе, мы берем столео списек, чтобы осталось 17, 13, 9, 5 или 1 спичка.
-* */
+ * Тут признаюсь я вычитал алгоритм, нужно всегода осатвлять игроку определенное число списек.
+ * А в случае, если игрок берт спички вторым, а по условию у нас так, то нужно брать столько, чтобы игроку отсавалось всегда 17, 13, 9, 5 и в конце одна спичка.
+ * И тут алгоритм такой, в зависимости от того, сколько списе на входе, мы берем столео списек, чтобы осталось 17, 13, 9, 5 или 1 спичка.
+ * */
 
 
 public class ArtificalIntllekt {
 
-    public static void computerAnotherTurn(ArrayList list) {
-        int j = list.size();
-        if (j > 17 && j <= 20) {
-            int n = list.size() - 17;
-            for (int m = 0; m < n; m++) {
-                list.remove(list.size() - 1);
+    public static void computerAnotherTurn(List list, int turn) {
+        if (turn == 1) {
+            for (int i = 0; i < 3; i++) {
+                list.remove(list.size()-1);
             }
-            MessegeClass.computrTakeMessage(n);
+            MessegeClass.computrTakeMessage(3);
             MessegeClass.balance(list.size());
-        } else if (j > 13 && j <= 17) {
-            int n = list.size() - 13;
-            for (int m = 0; m < n; m++) {
-                list.remove(list.size() - 1);
+        } else {
+            int nedd = 4 - Game.take;
+            for (int i = 0; i < nedd; i++) {
+                list.remove(list.size()-1);
             }
-            MessegeClass.computrTakeMessage(n);
+            MessegeClass.computrTakeMessage(nedd);
             MessegeClass.balance(list.size());
-        } else if (j > 9 && j <= 13) {
-            int n = list.size() - 9;
-            for (int m = 0; m < n; m++) {
-                list.remove(list.size() - 1);
-            }
-            MessegeClass.computrTakeMessage(n);
-            MessegeClass.balance(list.size());
-        } else if (j > 5 && j <= 9) {
-            int n = list.size() - 5;
-            for (int m = 0; m < n; m++) {
-                list.remove(list.size() - 1);
-            }
-            MessegeClass.computrTakeMessage(n);
-            MessegeClass.balance(list.size());
-        } else if (j > 1 && j <= 5) {
-            int n = list.size() - 1;
-            for (int m = 0; m < n; m++) {
-                list.remove(list.size() - 1);
-            }
-            MessegeClass.computrTakeMessage(n);
-            MessegeClass.balance(list.size());
-            MessegeClass.computerWin();
         }
+
     }
 }
+
+//    static int[] arr = new int[Game.startCount];
+//    public static void getWinnerArray()
+//    {
+//        for (int i = 1; i < Game.startCount; i++) {
+//            arr[i] = i+4;
+//        }
+//    }
+//    public static void computerAnotherTurn(ArrayList list, int turn) {
+//        System.out.println("Ходд номер " + turn);
+//        getWinnerArray();
+//        while(true){
+//            if(turn==1)
+//            {
+//                for (int i = 0; i < 3); i++) {
+//                    list.remove(list.size()-1);
+//                }
+//            }
+//            else
+//            {
+//                for (int i = 0; i < list.size()-(list.size()-arr[turn]); i++) {
+//                    list.remove(list.size()-1);
+//                }
+//            }
+//        }
+//    }
+//}
